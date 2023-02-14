@@ -39,12 +39,12 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-
+//plays 5 rounds code
 function game(){
     let playerScore = 0;
     let computerScore = 0;
-    for( let i = 0; i<5; i++){
-        let playerSelection = prompt('user input');
+    while(playerScore<5 && computerScore<5){
+        let playerSelection = userchoice();
         let computerSelection = getComputerChoice();
         let result = playRound(playerSelection,computerSelection);
         console.log (playerSelection,computerSelection,result);
@@ -57,16 +57,33 @@ function game(){
         } else {
             console.log(playerScore,computerScore);
         }
+
     }
-    if(playerScore > computerScore){
+    if(playerScore == 5){
         return 'Player wins';
-    }else if (computerScore > playerScore){
+    }else(computerScore == 5){
         return 'Computer Wins!';
-    } else {
-        return 'It\'s a tie!'
-    }
+    } 
+    
 }
 
-console.log(game());
+//console.log(game());
 
+function userchoice(){
+    const rock = document.querySelector('#but1');
+    const paper = document.querySelector('#but2');
+    const scissors = document.querySelector('#but3');
 
+    rock.addEventListener('click',e=>){
+        playRound('rock');
+    }
+    
+    paper.addEventListener('click', e=>){
+        playRound('paper');
+    }
+    
+    scissors.addEventListener('click', e=>){
+        playRound('scissors');
+    }
+
+}
